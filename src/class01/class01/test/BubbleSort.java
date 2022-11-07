@@ -64,6 +64,7 @@ public class BubbleSort {
 
     /**
      * 冒泡排序法
+     *
      * @param arr
      */
     public static void bubleSort(int[] arr) {
@@ -71,13 +72,14 @@ public class BubbleSort {
             return;
         }
         int n = arr.length;
-        for (int i = n - 1; i > 0; i--) {
-            for (int j = 0; j < i; j++) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
+        for (int end = n - 1; end > 0; end--) {
+            for (int start = 1; start <= end; start++) {
+                if (arr[start] < arr[start - 1]) {
+                    swap(arr, start - 1, start);
                 }
             }
         }
+
 
     }
 

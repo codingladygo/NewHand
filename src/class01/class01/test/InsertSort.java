@@ -73,12 +73,12 @@ public class InsertSort {
         }
         int n = arr.length;
         for (int i = 1; i < n; i++) {
-            int maxIndex = i;
-            while (maxIndex - 1 >= 0 && arr[maxIndex - 1] > arr[maxIndex]) {
-                swap(arr, maxIndex - 1, maxIndex);
-                maxIndex--;
+            for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
+                swap(arr, j, j + 1);
             }
         }
+
+
     }
 
     public static void insertSort2(int[] arr) {
