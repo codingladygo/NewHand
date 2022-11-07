@@ -4,9 +4,9 @@ import java.util.Arrays;
 
 /**
  * @Author duanyixuan
- * @Date 2022/11/7 5:13 PM
+ * @Date 2022/11/7 5:28 PM
  */
-public class SelectionSort {
+public class InsertSort {
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];
@@ -62,28 +62,38 @@ public class SelectionSort {
         return true;
     }
 
-
     /**
-     * 选择排序
-     * 按照从大到小排序
+     * 插入排序法
      *
      * @param arr
      */
-    public static void selectionSort(int[] arr) {
+    public static void insertSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
-        for (int i = 0; i < arr.length - 1; i++) {
-            int minIndex = i;
-            for (int j = i + 1; j < arr.length; j++) {
-                if (arr[j] < arr[minIndex]) {
-                    minIndex = j;
-                }
+        int n = arr.length;
+        for (int i = 1; i < n; i++) {
+            int maxIndex = i;
+            while (maxIndex - 1 >= 0 && arr[maxIndex - 1] > arr[maxIndex]) {
+                swap(arr, maxIndex - 1, maxIndex);
+                maxIndex--;
             }
-            swap(arr, i, minIndex);
+        }
+    }
+
+    public static void insertSort2(int[] arr) {
+        if (arr == null || arr.length < 2) {
+            return;
+        }
+        int n = arr.length;
+        for (int end = 1; end < n; end++) {
+            for (int pre = end - 1; pre >= 0 && arr[pre] > arr[pre + 1]; pre--) {
+                swap(arr, pre, pre + 1);
+            }
         }
 
     }
+
 
     public static void main(String[] args) {
         int testTime = 500000;
@@ -93,7 +103,7 @@ public class SelectionSort {
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
-            selectionSort(arr1);
+            insertSort2(arr1);
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {
                 succeed = false;
@@ -105,7 +115,7 @@ public class SelectionSort {
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
         System.out.println("");
-        selectionSort(arr);
+        insertSort2(arr);
         printArray(arr);
 
     }
