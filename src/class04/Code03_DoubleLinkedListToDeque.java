@@ -36,14 +36,14 @@ public class Code03_DoubleLinkedListToDeque {
 			return size;
 		}
 
-		public void pushHead(V value) {
+		public void pushHead(V value) { //头部加入元素
 			Node<V> cur = new Node<>(value);
 			if (head == null) {
 				head = cur;
 				tail = cur;
 			} else {
 				cur.next = head;
-				head.last = cur;
+				head.last = cur; //新增的元素默认头尾指向null
 				head = cur;
 			}
 			size++;
@@ -62,14 +62,15 @@ public class Code03_DoubleLinkedListToDeque {
 			size++;
 		}
 
-		public V pollHead() {
+		public V pollHead() { //弹出头部元素
 			V ans = null;
 			if (head == null) {
 				return ans;
 			}
 			size--;
 			ans = head.value;
-			if (head == tail) {
+			//调整头尾节点
+			if (head == tail) { //特例：双端队列中仅有一个元素
 				head = null;
 				tail = null;
 			} else {

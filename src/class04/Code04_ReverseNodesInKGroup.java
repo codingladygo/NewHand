@@ -16,7 +16,7 @@ public class Code04_ReverseNodesInKGroup {
 			return head;
 		}
 		// 第一组凑齐了！
-		head = end;
+		head = end; //head来到第一个k group的结尾
 		reverse(start, end);
 		// 上一组的结尾节点
 		ListNode lastEnd = start;
@@ -34,7 +34,7 @@ public class Code04_ReverseNodesInKGroup {
 	}
 
 	public static ListNode getKGroupEnd(ListNode start, int k) {
-		while (--k != 0 && start != null) {
+		while (--k != 0 && start != null) { //控制k个元素 && 控制k个元素
 			start = start.next;
 		}
 		return start;
@@ -51,7 +51,7 @@ public class Code04_ReverseNodesInKGroup {
 			pre = cur;
 			cur = next;
 		}
-		start.next = end;
+		start.next = end; //经过上面的while循环，start.next指向的是null，因此需要让start.next指向end
 	}
 
 }
