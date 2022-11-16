@@ -13,9 +13,9 @@ public class Code06_MergeTwoSortedLinkedList {
 		if (head1 == null || head2 == null) {
 			return head1 == null ? head2 : head1;
 		}
-		ListNode head = head1.val <= head2.val ? head1 : head2;
-		ListNode cur1 = head.next;
-		ListNode cur2 = head == head1 ? head2 : head1;
+		ListNode head = head1.val <= head2.val ? head1 : head2; //比较两个链表head节点的大小，决定谁作为链表的总头部
+		ListNode cur1 = head.next; //小头的下一个元素
+		ListNode cur2 = head == head1 ? head2 : head1; //大头
 		ListNode pre = head;
 		while (cur1 != null && cur2 != null) {
 			if (cur1.val <= cur2.val) {
