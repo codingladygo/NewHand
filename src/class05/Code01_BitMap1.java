@@ -8,12 +8,17 @@ public class Code01_BitMap1 {
 
     public static class BitMap {
 
-        private long[] bits; //64位
+        private long[] bits; //64位 long类型是64位
 
+        //max确定数组的大小，决定申请多长的数组
         public BitMap(int max) {
             bits = new long[(max + 64) >> 6]; //等同于 (max + 64) / 64
         }
 
+
+        //确定是数组中第几个数 num >> 6 -> num / 64
+        //确定是数组中第几个数的第几位 num & 63 -> num % 64 num % 64 只保留后7位的结果（从左到右）和num & 63的结果一致
+        //如何将第几位标记位1 1L代表从最开始的位置为1 ，1L << (num& 63) 代表1左移 (num& 63)位 然后和第几位的数进行或运算
         public void add(int num) {
             bits[num >> 6] |= (1 << (num & 63));
         }
