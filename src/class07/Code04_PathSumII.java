@@ -31,13 +31,13 @@ public class Code04_PathSumII {
 			if (preSum + x.val == sum) {
 				path.add(x.val);
 				ans.add(copy(path));
-				path.remove(path.size() - 1);
+				path.remove(path.size() - 1); //清理现场，因为会返回上一个节点
 			}
 			return;
 		}
 		// x 非叶节点
 		path.add(x.val);
-		preSum += x.val;
+		preSum += x.val; //值传递
 		if (x.left != null) {
 			process(x.left, path, preSum, sum, ans);
 		}

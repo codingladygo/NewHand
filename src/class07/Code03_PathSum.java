@@ -19,7 +19,7 @@ public class Code03_PathSum {
 		if (root == null) {
 			return false;
 		}
-		isSum = false;
+		isSum = false; //对某个树寻找路径的时候
 		process(root, 0, sum);
 		return isSum;
 	}

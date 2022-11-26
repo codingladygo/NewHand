@@ -59,10 +59,10 @@ public class Code03_BitAddMinusMultiDiv {
     public static int divide(int a, int b) {
         if (a == Integer.MIN_VALUE && b == Integer.MIN_VALUE) {
             return 1;
-        } else if (b == Integer.MIN_VALUE) {
+        } else if (b == Integer.MIN_VALUE) { //b是系统最小，返回0
             return 0;
-        } else if (a == Integer.MIN_VALUE) {
-            if (b == negNum(1)) {
+        } else if (a == Integer.MIN_VALUE) { //a是系统最小
+            if (b == negNum(1)) { //当b等于-1 leetcode强行规定返回-1
                 return Integer.MAX_VALUE;
             } else {
                 /*

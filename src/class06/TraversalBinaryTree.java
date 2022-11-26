@@ -16,11 +16,11 @@ public class TraversalBinaryTree {
 		if (head == null) {
 			return;
 		}
-		// 1
+		// 1 第一次
 		f(head.left);
-		// 2
+		// 2 第二次
 		f(head.right);
-		// 3
+		// 3 第三次
 	}
 
 	// 先序打印所有节点
