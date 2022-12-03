@@ -4,9 +4,9 @@ import java.util.Stack;
 
 public class Code03_PartitionAndQuickSort {
 
-	public static void splitNum1(int[] arr) {
-		int lessEqualR = -1;
-		int index = 0;
+	public static void splitNum1(int[] arr) { //快排
+		int lessEqualR = -1; //<=区的右边界
+		int index = 0;  //从左到右开始遍历的起始索引
 		int N = arr.length;
 		while (index < N) {
 			if (arr[index] <= arr[N - 1]) {
@@ -19,11 +19,11 @@ public class Code03_PartitionAndQuickSort {
 
 	public static void splitNum2(int[] arr) {
 		int N = arr.length;
-		int lessR = -1;
-		int moreL = N - 1;
+		int lessR = -1; //<区域的右边界
+		int moreL = N - 1; //>区域的左边界
 		int index = 0;
-		// arr[N-1]
-		while (index < moreL) {
+		// arr[N-1] 划分区域的值
+		while (index < moreL) { //直到当前数和>区域的左边界撞上
 			if (arr[index] < arr[N - 1]) {
 				swap(arr, ++lessR, index++);
 			} else if (arr[index] > arr[N - 1]) {
@@ -32,7 +32,7 @@ public class Code03_PartitionAndQuickSort {
 				index++;
 			}
 		}
-		swap(arr, moreL, N - 1);
+		swap(arr, moreL, N - 1); //交换>区域的左边界和最后一个数据进行交换
 	}
 
 	public static void swap(int[] arr, int i, int j) {
@@ -57,7 +57,7 @@ public class Code03_PartitionAndQuickSort {
 			}
 		}
 		swap(arr, moreL, R);
-		return new int[] { lessR + 1, moreL };
+		return new int[] { lessR + 1, moreL }; //=区域的左右边界的索引
 	}
 
 	public static void quickSort1(int[] arr) {
@@ -72,6 +72,8 @@ public class Code03_PartitionAndQuickSort {
 			return;
 		}
 		int[] equalE = partition(arr, L, R);
+		//equalE[0] 等于区域的第一个数
+		//equalE[1] 等于区域的最后一个数据
 		process(arr, L, equalE[0] - 1);
 		process(arr, equalE[1] + 1, R);
 	}
@@ -86,7 +88,7 @@ public class Code03_PartitionAndQuickSort {
 		}
 	}
 
-	public static void quickSort2(int[] arr) {
+	public static void quickSort2(int[] arr) {//非递归方法
 		if (arr == null || arr.length < 2) {
 			return;
 		}

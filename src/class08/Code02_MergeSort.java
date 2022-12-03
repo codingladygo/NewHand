@@ -53,14 +53,18 @@ public class Code02_MergeSort {
 			int L = 0;
 			while (L < N) {
 				int M = 0;
+				//左组：L...M
 				if (N - L >= step) {
 					M = L + step - 1;
 				} else {
 					M = N - 1;
 				}
-				if (M == N - 1) {
+				if (M == N - 1) { //没有右组
 					break;
 				}
+
+				//右组：M+1...R(R最大为N-1)
+				//长度(N-1)-(M+1)+1 = N-M-1
 				int R = 0;
 				if (N - 1 - M >= step) {
 					R = M + step;
